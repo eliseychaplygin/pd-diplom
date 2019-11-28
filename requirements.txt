@@ -1,2 +1,6 @@
-Django==2.0.5
+PyYAML
+requests
+Django
 pytz==2018.5
+djangorestframework
+django_rest_passwordreset
