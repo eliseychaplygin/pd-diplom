@@ -3,6 +3,9 @@ from django_rest_passwordreset.views import reset_password_request_token, reset_
 
 from .views import RegisterUser, LoginUser, UserDetails, ContactView, \
     ProviderUpdate, ProviderState, ShopView, CategoryView, ProductView, CartView, OrderView, ProviderOrders
+from rest_framework.schemas import get_schema_view
+from rest_framework.routers import DefaultRouter
+
 
 app_name = 'api'
 
@@ -21,4 +24,8 @@ urlpatterns = [
     path('user/register', RegisterUser.as_view(), name='user-register'),
     path('user/password_reset', reset_password_request_token, name='password-reset'),
     path('user/password_reset/confirm', reset_password_confirm, name='password-reset-confirm'),
+    path('openapi', get_schema_view(title="Your Project",
+                                    description="API for all things …",
+                                    # version="1.0.0"
+                                    ), name='openapi-schema'),
 ]

@@ -88,7 +88,6 @@ class UserDetails(APIView):
         else:
             return Response({'status': False, 'error': user_serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
-
 class ContactView(APIView):
     permission_classes = [IsAuthenticated]
 

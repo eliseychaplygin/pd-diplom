@@ -4,3 +4,4 @@ Django
 pytz==2018.5
 djangorestframework
 django_rest_passwordreset
+coreapi
