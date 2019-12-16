@@ -7,7 +7,7 @@ from django.core.validators import URLValidator
 from django.db import IntegrityError
 from django.db.models import Q, Sum, Prefetch
 from requests import get
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.authtoken.models import Token
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
@@ -227,14 +227,28 @@ class ProviderOrders(APIView):
         return Response(serializer.data)
 
 # просмотр списка магазинов
-class ShopView(ListAPIView):
-    queryset = Shop.objects.filter(state=True)
-    serializer_class = ShopSerializer
+# class ShopView(ListAPIView):
+#     queryset = Shop.objects.filter(state=True)
+#     serializer_class = ShopSerializer
+
+class ShopViewSet(viewsets.ViewSet):
+
+    def list(self, request):
+        queryset = Shop.objects.filter(state=True)
+        serializer = ShopSerializer(queryset, many=True)
+        return Response(serializer.data)
 
 # просмотр категорий
-class CategoryView(ListAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+# class CategoryView(ListAPIView):
+#     queryset = Category.objects.all()
+#     serializer_class = CategorySerializer
+
+class CategoryViewSet(viewsets.ViewSet):
+
+    def list(self, request):
+        queryset = Category.objects.all()
+        serializer = CategorySerializer(queryset, many=True)
+        return Response(serializer.data)
 
 # поиск товаров
 class ProductView(APIView):
