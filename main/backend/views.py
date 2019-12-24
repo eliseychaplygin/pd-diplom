@@ -227,28 +227,28 @@ class ProviderOrders(APIView):
         return Response(serializer.data)
 
 # просмотр списка магазинов
-# class ShopView(ListAPIView):
-#     queryset = Shop.objects.filter(state=True)
-#     serializer_class = ShopSerializer
+class ShopView(ListAPIView):
+    queryset = Shop.objects.filter(state=True)
+    serializer_class = ShopSerializer
 
-class ShopViewSet(viewsets.ViewSet):
-
-    def list(self, request):
-        queryset = Shop.objects.filter(state=True)
-        serializer = ShopSerializer(queryset, many=True)
-        return Response(serializer.data)
+# class ShopViewSet(viewsets.ViewSet):
+#
+#     def list(self, request):
+#         queryset = Shop.objects.filter(state=True)
+#         serializer = ShopSerializer(queryset, many=True)
+#         return Response(serializer.data)
 
 # просмотр категорий
-# class CategoryView(ListAPIView):
-#     queryset = Category.objects.all()
-#     serializer_class = CategorySerializer
+class CategoryView(ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
-class CategoryViewSet(viewsets.ViewSet):
-
-    def list(self, request):
-        queryset = Category.objects.all()
-        serializer = CategorySerializer(queryset, many=True)
-        return Response(serializer.data)
+# class CategoryViewSet(viewsets.ViewSet):
+#
+#     def list(self, request):
+#         queryset = Category.objects.all()
+#         serializer = CategorySerializer(queryset, many=True)
+#         return Response(serializer.data)
 
 # поиск товаров
 class ProductView(APIView):
